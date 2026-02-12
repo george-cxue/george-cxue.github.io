@@ -12,14 +12,14 @@ export default function AboutPage() {
         <h1 className="mb-8 font-medium text-neutral-900">George Xue</h1>
 
         <p>
-          I am a software engineer based in Philadelphia. I studied Computer
-          Science at the University of Pennsylvania. I am passionate about
-          building great software and solving interesting problems.
+          I am a product enthusiast originally from Kansas City. I studied
+          Computer Science at the University of Pennsylvania. I am passionate
+          about building great tech products and solving interesting problems.
         </p>
 
         <p>
-          Outside of work, I enjoy photography, music, and exploring new places.
-          This site is a collection of my thoughts, projects, and things I find
+          Outside of work, I enjoy photography, dance, and exploring new places.
+          This site is a collection of my thoughts and things I find
           interesting.
         </p>
       </div>

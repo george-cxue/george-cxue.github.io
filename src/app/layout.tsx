@@ -15,7 +15,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://georgexue.com"),
-  title: "George Xue",
+  title: "George | 薛畅",
   description: "Personal Portfolio",
 };
 
