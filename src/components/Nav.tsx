@@ -1,15 +1,15 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 const NAV_ITEMS = [
   { name: "about", path: "/" },
   { name: "thoughts", path: "/thoughts" },
-  { name: "photos", path: "/photos" },
   // { name: 'people', path: '/people' },
   { name: "projects", path: "/projects" },
+  { name: "photos", path: "/photos" },
   { name: "quotes", path: "/quotes" },
 ];
 

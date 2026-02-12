@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Link } from "next-view-transitions";
 import { notFound } from "next/navigation";
 import { getAllThoughts, getThoughtBySlug } from "@/lib/thoughts";
 
@@ -47,6 +48,12 @@ export default async function ThoughtPage({
 
   return (
     <article className="relative">
+      <Link
+        href="/thoughts"
+        className="mb-6 inline-flex items-center text-neutral-400 transition-colors hover:text-neutral-900"
+      >
+        <span className="mr-1">&larr;</span>
+      </Link>
       <header className="mb-8">
         <div className="flex items-baseline justify-between">
           <h1 className="mb-0 font-medium text-neutral-900">{thought.title}</h1>
