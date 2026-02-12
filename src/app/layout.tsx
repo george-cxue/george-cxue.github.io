@@ -1,25 +1,29 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter, Lora } from 'next/font/google';
-import Nav from '@/components/Nav';
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter, Lora } from "next/font/google";
+import Nav from "@/components/Nav";
 
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 const lora = Lora({
-  subsets: ['latin'],
-  variable: '--font-lora',
+  subsets: ["latin"],
+  variable: "--font-lora",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://georgexue.com'),
-  title: 'George Xue',
-  description: 'Personal Portfolio',
+  metadataBase: new URL("https://georgexue.com"),
+  title: "George Xue",
+  description: "Personal Portfolio",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body className="font-sans">
