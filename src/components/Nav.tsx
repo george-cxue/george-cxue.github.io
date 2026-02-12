@@ -22,7 +22,7 @@ export default function Nav() {
   };
 
   return (
-    <nav className="mb-6 border-b border-neutral-200 pb-4 text-base leading-5 xs:mb-0 xs:mr-6 xs:border-none xs:pb-0 sm:mr-8 md:mr-12">
+    <nav className="mb-6 border-b border-neutral-200 pb-4 text-base leading-5 xs:mb-0 xs:mr-8 xs:border-none xs:pb-0 sm:mr-10 md:mr-14">
       <menu className="flex flex-wrap justify-end gap-4 xs:sticky xs:top-6 xs:flex-col xs:justify-start xs:gap-1 xs:text-right sm:top-12 md:top-24">
         {NAV_ITEMS.map(({ name, path }) => (
           <li key={path}>

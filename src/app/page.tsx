@@ -1,26 +1,28 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'George Xue',
-  description: 'Personal portfolio of George Xue',
+  title: "George Xue",
+  description: "Personal portfolio of George Xue",
 };
 
 export default function AboutPage() {
   return (
-    <article className="space-y-4">
-      <h1 className="mb-8 font-medium text-neutral-900">George Xue</h1>
+    <article className="relative">
+      <div className="space-y-4">
+        <h1 className="mb-8 font-medium text-neutral-900">George Xue</h1>
 
-      <p>
-        I am a software engineer based in Philadelphia. I studied Computer Science
-        at the University of Pennsylvania. I am passionate about building great
-        software and solving interesting problems.
-      </p>
+        <p>
+          I am a software engineer based in Philadelphia. I studied Computer
+          Science at the University of Pennsylvania. I am passionate about
+          building great software and solving interesting problems.
+        </p>
 
-      <p>
-        Outside of work, I enjoy photography, music, and exploring new places.
-        This site is a collection of my thoughts, projects, and things I find
-        interesting.
-      </p>
+        <p>
+          Outside of work, I enjoy photography, music, and exploring new places.
+          This site is a collection of my thoughts, projects, and things I find
+          interesting.
+        </p>
+      </div>
 
       <hr className="my-8 border-neutral-200" />
 

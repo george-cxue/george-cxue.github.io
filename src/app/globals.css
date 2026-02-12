@@ -3,9 +3,18 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply bg-neutral-50 text-neutral-800 text-sm antialiased;
+  :root {
+    --bg-page: #FAF9F6;
   }
+
+  html {
+    background-color: var(--bg-page);
+    @apply text-neutral-800 text-sm antialiased;
+  }
+}
+
+.bg-page {
+  background-color: var(--bg-page);
 }
 
 /* Prose styles for markdown content */
