@@ -13,10 +13,29 @@ interface Project {
   description: string;
 }
 
+interface SideProject {
+  name: string;
+  url?: string;
+}
+
+const SIDE_PROJECTS: SideProject[] = [
+  { name: "Flit" },
+  { name: "Gacha", url: "https://github.com/george-cxue/gacha" },
+  { name: "Stryde", url: "https://github.com/zminsc/stryde" },
+  { name: "Rewind", url: "https://github.com/george-cxue/Rewind" },
+  { name: "VinoVoyage", url: "https://github.com/george-cxue/VinoVoyage" },
+];
+
 const PROJECTS: Project[] = [
+  // {
+  //   name: "",
+  //   url: "https://store.google.com/category/phones?hl=en-US&pli=1",
+  //   logo: "/media/icons/google-pixel.webp",
+  //   description: "Built some cool phones.",
+  // },
   {
-    name: "Paradigm",
-    url: "#",
+    name: "",
+    url: "https://www.paradigmai.com/",
     logo: "/media/icons/paradigm.svg",
     description:
       "Designed, built, and launched multiple features to reimagine the way people work with AI and spreadsheets.",
@@ -31,17 +50,24 @@ export default function ProjectsPage() {
         Here are some of the projects I&apos;ve had the pleasure of working on.
       </p>
 
-      {PROJECTS.map((project) => (
-        <div key={project.name} className="mt-12 space-y-4">
+      {PROJECTS.map((project, i) => (
+        <div key={project.url + i} className="mt-12 space-y-4">
           {project.logo && (
             <div className="mb-4 flex">
-              <Image
-                src={project.logo}
-                alt={`${project.name} logo`}
-                width={32}
-                height={32}
-                className="w-8 grayscale"
-              />
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-opacity hover:opacity-70"
+              >
+                <Image
+                  src={project.logo}
+                  alt={`${project.name} logo`}
+                  width={120}
+                  height={30}
+                  className="h-6 w-auto grayscale"
+                />
+              </a>
             </div>
           )}
           {project.url !== "#" ? (
@@ -63,12 +89,23 @@ export default function ProjectsPage() {
       ))}
       <hr className="my-8 border-neutral-200" />
       <p>My other side projects:</p>
-      <ul className="my-2 ">
-        <li>Flit</li>
-        <li>Gacha</li>
-        <li>Stryde</li>
-        <li>Rewind</li>
-        <li>VinoVoyage</li>
+      <ul className="my-2">
+        {SIDE_PROJECTS.map((sp) => (
+          <li key={sp.name}>
+            {sp.url ? (
+              <a
+                href={sp.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-neutral-300 transition-colors hover:text-neutral-900 hover:decoration-neutral-400"
+              >
+                {sp.name}
+              </a>
+            ) : (
+              sp.name
+            )}
+          </li>
+        ))}
       </ul>
     </article>
   );
