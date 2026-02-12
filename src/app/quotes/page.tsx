@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import BlockQuote from "@/components/BlockQuote";
 
 export const metadata: Metadata = {
-  title: "Quotes - George Xue",
+  title: "Quotes - George",
   description: "A collection of quotes I find meaningful",
 };
 

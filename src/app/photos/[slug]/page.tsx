@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { EXHIBITS } from '@/data/photos';
+import type { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { EXHIBITS } from "@/data/photos";
 
 export function generateStaticParams() {
   return EXHIBITS.map(({ slug }) => ({ slug }));
@@ -19,17 +19,17 @@ export async function generateMetadata({
   if (!exhibit) return {};
 
   return {
-    title: `${exhibit.title} - George Xue`,
+    title: `${exhibit.title} - George`,
     description: exhibit.description || `Photos from ${exhibit.title}`,
   };
 }
 
 function formatDate(dateString: string): string {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  const date = new Date(dateString + "T00:00:00");
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 }
 
@@ -49,9 +49,7 @@ export default async function ExhibitPage({
     <article>
       <header className="mb-8">
         <div className="flex items-baseline justify-between">
-          <h1 className="mb-0 font-medium text-neutral-900">
-            {exhibit.title}
-          </h1>
+          <h1 className="mb-0 font-medium text-neutral-900">{exhibit.title}</h1>
           <time className="ml-2 whitespace-nowrap text-neutral-500">
             {formatDate(exhibit.date)}
           </time>

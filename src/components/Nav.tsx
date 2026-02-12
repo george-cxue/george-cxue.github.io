@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 const NAV_ITEMS = [
-  { name: 'about', path: '/' },
-  { name: 'thoughts', path: '/thoughts' },
-  { name: 'photos', path: '/photos' },
-  { name: 'people', path: '/people' },
-  { name: 'projects', path: '/projects' },
-  { name: 'quotes', path: '/quotes' },
+  { name: "about", path: "/" },
+  { name: "thoughts", path: "/thoughts" },
+  { name: "photos", path: "/photos" },
+  // { name: 'people', path: '/people' },
+  { name: "projects", path: "/projects" },
+  { name: "quotes", path: "/quotes" },
 ];
 
 export default function Nav() {
-  const pathname = usePathname() || '/';
+  const pathname = usePathname() || "/";
 
   const isActive = (path: string) => {
-    if (path === '/') return pathname === '/';
+    if (path === "/") return pathname === "/";
     return pathname.startsWith(path);
   };
 
@@ -29,10 +29,10 @@ export default function Nav() {
             <Link
               href={path}
               className={clsx(
-                'font-serif italic transition-colors',
+                "font-serif italic transition-colors",
                 isActive(path)
-                  ? 'text-neutral-900'
-                  : 'text-neutral-400 hover:text-neutral-900'
+                  ? "text-neutral-900"
+                  : "text-neutral-400 hover:text-neutral-900",
               )}
             >
               {name}

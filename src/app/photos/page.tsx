@@ -1,24 +1,24 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { EXHIBITS } from '@/data/photos';
+import type { Metadata } from "next";
+import Link from "next/link";
+import Image from "next/image";
+import { EXHIBITS } from "@/data/photos";
 
 export const metadata: Metadata = {
-  title: 'Photos - George Xue',
-  description: 'Photography organized by exhibits and events',
+  title: "Photos - George",
+  description: "Photography organized by exhibits and events",
 };
 
 function formatDate(dateString: string): string {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
+  const date = new Date(dateString + "T00:00:00");
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
   });
 }
 
 export default function PhotosPage() {
   const exhibits = [...EXHIBITS].sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
   return (
@@ -48,9 +48,7 @@ export default function PhotosPage() {
                 {exhibit.description && (
                   <span className="text-neutral-300"> &mdash; </span>
                 )}
-                {exhibit.description && (
-                  <span>{exhibit.description}</span>
-                )}
+                {exhibit.description && <span>{exhibit.description}</span>}
               </p>
             </div>
           </Link>

@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { getAllThoughts, getThoughtBySlug } from '@/lib/thoughts';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getAllThoughts, getThoughtBySlug } from "@/lib/thoughts";
 
 export function generateStaticParams() {
   const thoughts = getAllThoughts();
@@ -19,17 +19,17 @@ export async function generateMetadata({
   if (!thought) return {};
 
   return {
-    title: `${thought.title} - George Xue`,
+    title: `${thought.title} - George`,
     description: thought.description,
   };
 }
 
 function formatDate(dateString: string): string {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  const date = new Date(dateString + "T00:00:00");
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 }
 

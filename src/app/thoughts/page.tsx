@@ -1,18 +1,18 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { getAllThoughts } from '@/lib/thoughts';
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getAllThoughts } from "@/lib/thoughts";
 
 export const metadata: Metadata = {
-  title: 'Thoughts - George Xue',
-  description: 'Blog posts and essays',
+  title: "Thoughts - George",
+  description: "Blog posts and essays",
 };
 
 function formatDate(dateString: string): string {
-  const date = new Date(dateString + 'T00:00:00');
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+  const date = new Date(dateString + "T00:00:00");
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 }
 

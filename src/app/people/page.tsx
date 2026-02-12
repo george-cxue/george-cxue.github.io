@@ -1,14 +1,17 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'People - George Xue',
-  description: 'Thinkers, writers, and builders who have influenced me',
+  title: "People - George",
+  description: "Thinkers, writers, and builders who have influenced me",
 };
 
 const PEOPLE = [
-  { name: 'Paul Graham', url: 'http://paulgraham.com/' },
-  { name: 'Patrick Collison', url: 'https://patrickcollison.com/' },
-  { name: 'Richard Feynman', url: 'https://en.wikipedia.org/wiki/Richard_Feynman' },
+  { name: "Paul Graham", url: "http://paulgraham.com/" },
+  { name: "Patrick Collison", url: "https://patrickcollison.com/" },
+  {
+    name: "Richard Feynman",
+    url: "https://en.wikipedia.org/wiki/Richard_Feynman",
+  },
 ];
 
 export default function PeoplePage() {

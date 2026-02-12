@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "George Xue",
+  title: "George | 薛畅",
   description: "Personal portfolio of George Xue",
 };
 
