@@ -7,6 +7,7 @@ import clsx from 'clsx';
 const NAV_ITEMS = [
   { name: 'about', path: '/' },
   { name: 'thoughts', path: '/thoughts' },
+  { name: 'photos', path: '/photos' },
   { name: 'people', path: '/people' },
   { name: 'projects', path: '/projects' },
   { name: 'quotes', path: '/quotes' },
