@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import { ViewTransitions } from "next-view-transitions";
 import Nav from "@/components/Nav";
+import MusicPlayer from "@/components/MusicPlayer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
+          <MusicPlayer />
         </body>
       </html>
     </ViewTransitions>
