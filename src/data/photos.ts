@@ -38,6 +38,7 @@ export interface Exhibit {
   date: string;
   description?: string;
   cover: string;
+  coverPosition?: string;
   photos: Photo[];
 }
 
@@ -52,6 +53,7 @@ interface ExhibitMeta {
   date: string;
   description?: string;
   cover?: string;
+  coverPosition?: string;
   photos?: PhotoEntry[];
 }
 
@@ -112,6 +114,7 @@ function loadExhibits(): Exhibit[] {
       date: meta.date,
       ...(meta.description ? { description: meta.description } : {}),
       cover,
+      ...(meta.coverPosition ? { coverPosition: meta.coverPosition } : {}),
       photos,
     });
   }

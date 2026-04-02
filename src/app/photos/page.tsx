@@ -37,6 +37,7 @@ export default function PhotosPage() {
                 fill
                 sizes="(max-width: 640px) 45vw, 200px"
                 className="object-cover"
+                style={exhibit.coverPosition ? { objectPosition: exhibit.coverPosition } : undefined}
               />
             </div>
             <div className="mt-2">
