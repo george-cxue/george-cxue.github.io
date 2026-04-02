@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Link } from 'next-view-transitions';
 import { HiArrowLeft, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
@@ -19,6 +19,7 @@ export function ExhibitViewer({ exhibit }: { exhibit: Exhibit }) {
   const [idx, setIdx] = useState(0);
   const photos = exhibit.photos;
   const current = photos[idx];
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -46,7 +47,19 @@ export function ExhibitViewer({ exhibit }: { exhibit: Exhibit }) {
       </div>
 
       {/* Main photo area */}
-      <div className="relative flex flex-1 items-center justify-center overflow-hidden">
+      <div
+        className="relative flex flex-1 items-center justify-center overflow-hidden"
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX.current;
+          if (Math.abs(dx) > 50) {
+            if (dx < 0) setIdx((i) => Math.min(i + 1, photos.length - 1));
+            else setIdx((i) => Math.max(i - 1, 0));
+          }
+          touchStartX.current = null;
+        }}
+      >
         <button
           onClick={() => setIdx((i) => Math.max(i - 1, 0))}
           disabled={idx === 0}
