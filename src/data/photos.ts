@@ -28,6 +28,7 @@ import path from 'path';
 
 export interface Photo {
   src: string;
+  thumb: string;
   alt: string;
   caption?: string;
 }
@@ -38,6 +39,7 @@ export interface Exhibit {
   date: string;
   description?: string;
   cover: string;
+  coverThumb: string;
   coverPosition?: string;
   photos: Photo[];
 }
@@ -59,7 +61,9 @@ interface ExhibitMeta {
 
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp']);
 
-function isImage(filename: string): boolean {
+function isSourceImage(filename: string): boolean {
+  // Skip generated variants (produced by scripts/optimize-photos.mjs)
+  if (filename.includes('.thumb.')) return false;
   return IMAGE_EXTENSIONS.has(path.extname(filename).toLowerCase());
 }
 
@@ -70,6 +74,12 @@ function fileToAlt(filename: string): string {
 function resolveSrc(slug: string, file: string): string {
   if (file.startsWith('/')) return file;
   return `/media/photos/${slug}/${file}`;
+}
+
+function thumbPath(src: string): string {
+  // /media/photos/foo/1.jpg -> /media/photos/foo/1.thumb.webp
+  const dot = src.lastIndexOf('.');
+  return dot === -1 ? `${src}.thumb.webp` : `${src.slice(0, dot)}.thumb.webp`;
 }
 
 function loadExhibits(): Exhibit[] {
@@ -95,18 +105,23 @@ function loadExhibits(): Exhibit[] {
       ? meta.photos
       : fs
           .readdirSync(exhibitDir)
-          .filter(isImage)
+          .filter(isSourceImage)
           .sort()
           .map((file) => ({ file }));
 
-    const photos: Photo[] = photoEntries.map((entry) => ({
-      src: resolveSrc(slug, entry.file),
-      alt: entry.alt ?? fileToAlt(entry.file),
-      ...(entry.caption ? { caption: entry.caption } : {}),
-    }));
+    const photos: Photo[] = photoEntries.map((entry) => {
+      const src = resolveSrc(slug, entry.file);
+      return {
+        src,
+        thumb: thumbPath(src),
+        alt: entry.alt ?? fileToAlt(entry.file),
+        ...(entry.caption ? { caption: entry.caption } : {}),
+      };
+    });
 
     const coverFile = meta.cover ?? photoEntries[0]?.file ?? '';
     const cover = resolveSrc(slug, coverFile);
+    const coverThumb = thumbPath(cover);
 
     exhibits.push({
       slug,
@@ -114,6 +129,7 @@ function loadExhibits(): Exhibit[] {
       date: meta.date,
       ...(meta.description ? { description: meta.description } : {}),
       cover,
+      coverThumb,
       ...(meta.coverPosition ? { coverPosition: meta.coverPosition } : {}),
       photos,
     });

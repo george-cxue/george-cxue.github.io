@@ -32,7 +32,7 @@ export default function PhotosPage() {
           >
             <div className="relative aspect-square overflow-hidden">
               <Image
-                src={exhibit.cover}
+                src={exhibit.coverThumb}
                 alt={exhibit.title}
                 fill
                 sizes="(max-width: 640px) 45vw, 200px"

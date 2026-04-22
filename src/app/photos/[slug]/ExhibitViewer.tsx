@@ -30,6 +30,15 @@ export function ExhibitViewer({ exhibit }: { exhibit: Exhibit }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [photos.length]);
 
+  // Warm the browser cache for adjacent photos so arrow/swipe nav is instant.
+  useEffect(() => {
+    const neighbors = [photos[idx + 1]?.src, photos[idx - 1]?.src].filter(Boolean) as string[];
+    for (const src of neighbors) {
+      const img = new window.Image();
+      img.src = src;
+    }
+  }, [idx, photos]);
+
   return (
     <div className="fixed inset-0 z-[60] flex flex-col bg-black">
       {/* Top bar */}
@@ -75,6 +84,8 @@ export function ExhibitViewer({ exhibit }: { exhibit: Exhibit }) {
             src={current.src}
             alt={current.alt}
             fill
+            priority={idx === 0}
+            sizes="100vw"
             className="object-contain"
           />
         </div>
@@ -112,9 +123,10 @@ export function ExhibitViewer({ exhibit }: { exhibit: Exhibit }) {
             aria-label={`View photo ${i + 1}`}
           >
             <Image
-              src={photo.src}
+              src={photo.thumb}
               alt={photo.alt}
               fill
+              sizes="48px"
               className="object-cover"
             />
           </button>
