@@ -32,6 +32,9 @@ const QUOTES = [
     author: "Will Durant",
     source: "The Story of Philosophy",
   },
+  {
+    quote: "In a life full of variables, define your constants.",
+  },
 ];
 
 export default function QuotesPage() {
